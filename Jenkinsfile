@@ -1,7 +1,7 @@
 pipeline{
     agent any
     stages{
-        stage("Compile Stage"){
+        stage ('Compile Stage') {
             steps{
                    withMaven(maven : 'maven-3.6.2'){
                         sh 'mvn clean compile'
