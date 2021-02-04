@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: springbootk8demo
+  name: springbootk8demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springbootk8demo
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: springbootk8demo
+    spec:
+      containers:
+      - image: psil/springboot-k8-demo
+        name: springboot-k8-demo
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: springbootk8demo
+  name: springbootk8demo
+spec:
+  ports:
+  - name: 8090-8090
+    port: 8090
+    protocol: TCP
+    targetPort: 8090
+  selector:
+    app: springbootk8demo
+  type: ClusterIP
+status:
+  loadBalancer: {}
